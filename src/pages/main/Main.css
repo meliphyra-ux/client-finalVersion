@@ -1,0 +1,18 @@
+.category--all{
+    width: 100%;
+}
+.product--grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 0 101px;
+    justify-items: center;
+}
+.category{
+    padding-left: 101px;
+    text-align: left;
+    margin-bottom: 86px;
+    margin-top: 80px;
+    font-weight: 400;
+    font-size: 42px;
+}
