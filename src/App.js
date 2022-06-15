@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Cart from "./pages/cart/Cart";
 import Main from "./pages/main/Main";
 import Pdp from "./pages/pdp/Pdp";
-import { useNavigate, Navigate } from "react-router-dom";
+import { WrapComponent } from "./components/WrapComponent";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class App extends React.Component {
       currency: 0,
       itemCounter: 0,
       height: 0,
-      page: ""
+      page: "",
     };
     this.heightCalc = React.createRef();
     this.handleCart = this.handleCart.bind(this);
@@ -69,11 +69,9 @@ class App extends React.Component {
     );
     const cart = [...this.state.cart];
     cart.splice(cart.indexOf(deletedProduct), 1);
-    this.setState(
-      {
-        cart: [...cart],
-      }
-    );
+    this.setState({
+      cart: [...cart],
+    });
   }
   render() {
     return (
@@ -97,9 +95,8 @@ class App extends React.Component {
           navigate={this.props.navigate}
         />
         <Routes>
-          <Route path="/" element={<Navigate to="/all" />} />
           <Route
-            path="/:id"
+            path="/"
             element={
               <Main
                 handleCart={this.handleCart}
@@ -107,7 +104,18 @@ class App extends React.Component {
                 navigate={this.props.navigate}
               />
             }
-          />
+          >
+            <Route
+              path="/:id"
+              element={
+                <Main
+                  handleCart={this.handleCart}
+                  currency={this.state.currency}
+                  navigate={this.props.navigate}
+                />
+              }
+            />
+          </Route>
           <Route
             path="/products/:id"
             element={
@@ -137,7 +145,4 @@ class App extends React.Component {
     );
   }
 }
-
-export default function AppWrap(props) {
-  return <App {...props} navigate={useNavigate()} />;
-}
+export default WrapComponent(App);

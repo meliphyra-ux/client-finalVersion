@@ -78,10 +78,12 @@ class Cart extends React.Component {
               <h2>
                 Total: <b>{this.state.currency + this.state.total}</b>
               </h2>
+              <button>CHECK OUT</button>
             </>
           )}
         </div>
         {this.props.cart.length === 0 && <h1>Cart is empty</h1>}
+        
       </div>
     );
   }

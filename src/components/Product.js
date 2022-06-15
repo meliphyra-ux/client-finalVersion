@@ -58,7 +58,9 @@ class Product extends React.Component {
             <h1>OUT OF STOCK</h1>
           </div>
         )}
-        <img src={this.props.img} alt="" />
+        <div className="product--foto">
+          <img src={this.props.img} alt="" />
+        </div>
         {this.state.focus && this.props.inStock && (
           <button
             className="cart--add"

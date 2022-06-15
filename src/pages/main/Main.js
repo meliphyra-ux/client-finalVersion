@@ -2,7 +2,8 @@ import React from "react";
 import Product from "../../components/Product";
 import "./Main.css";
 import { getCategory } from "../../GraphQL/queries";
-import { useParams  } from "react-router-dom";
+import { WrapComponent } from "../../components/WrapComponent";
+
 
 class Main extends React.Component {
   constructor(props) {
@@ -11,11 +12,14 @@ class Main extends React.Component {
       products: null,
       title: "",
       err: null,
-      page: null,
+      page: "all",
     };
   }
   componentDidMount() {
-    const { id } = this.props.params
+    let { id } = this.props.params;
+    if (id === undefined) {
+      id = "all";
+    }
     getCategory(id)
       .then((data) => {
         this.setState({
@@ -24,6 +28,7 @@ class Main extends React.Component {
             data.category.name[0].toUpperCase() +
             data.category.name.substring(1),
           page: id,
+          err: null,
         });
       })
       .catch((err) => {
@@ -33,7 +38,10 @@ class Main extends React.Component {
       });
   }
   componentDidUpdate() {
-    const { id } = this.props.params
+    let { id } = this.props.params;
+    if (id === undefined) {
+      id = "all";
+    }
     if (id !== this.state.page)
       getCategory(id)
         .then((data) => {
@@ -43,6 +51,7 @@ class Main extends React.Component {
               data.category.name[0].toUpperCase() +
               data.category.name.substring(1),
             page: id,
+            err: null,
           });
         })
         .catch((err) => {
@@ -80,6 +89,4 @@ class Main extends React.Component {
     );
   }
 }
-export default function MainWrap(props){
- return <Main {...props} params={useParams()}/>
-};
+export default WrapComponent(Main)

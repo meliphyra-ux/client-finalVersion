@@ -1,9 +1,9 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import PdpProps from "../../components/PdpProps";
 import { getProduct } from "../../GraphQL/queries";
 import "./Pdp.css";
 import { Markup } from "interweave";
+import { WrapComponent } from "../../components/WrapComponent";
 
 class Pdp extends React.Component {
   constructor(props) {
@@ -88,7 +88,7 @@ class Pdp extends React.Component {
               src={this.state.mainFoto}
               className="pdp--mainFoto"
               alt=""
-            ></img>
+            />
             <div className="pdp--info">
               <h1>{this.state.properties.brand}</h1>
               <h2>{this.state.properties.name}</h2>
@@ -128,6 +128,4 @@ class Pdp extends React.Component {
     );
   }
 }
-export default function PdpWrapper(props) {
-  return <Pdp {...props} params={useParams()} />;
-}
+export default WrapComponent(Pdp)

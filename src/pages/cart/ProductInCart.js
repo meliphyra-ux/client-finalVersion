@@ -145,10 +145,7 @@ class ProductInCart extends Component {
           {this.props.product.item.gallery.length !== 1 && (
             <>
               <button
-                style={{
-                  right: "50px",
-                  bottom: "10px",
-                }}
+              className="left"
                 onClick={() => {
                   if (this.state.foto > 0) {
                     this.setState({
@@ -160,10 +157,7 @@ class ProductInCart extends Component {
                 <img src={Left} alt="" />
               </button>
               <button
-                style={{
-                  right: "10px",
-                  bottom: "10px",
-                }}
+              className="right"
                 onClick={() => {
                   if (
                     this.state.foto <

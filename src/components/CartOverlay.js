@@ -77,13 +77,12 @@ class CartOverlay extends React.Component {
         <button
         className="navbar--cartOverlay--bag"
           onClick={() => {
-            this.props.showCart()
             this.props.navigate("/cart")
           }}
         >
           VIEW BAG
         </button>
-        <button>CHECK OUT</button>
+        <button>ORDER</button>
       </div>
     );
   }
