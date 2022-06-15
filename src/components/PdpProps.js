@@ -34,7 +34,6 @@ class PdpProps extends React.Component {
                     this.props.att.name !== "Color"
                       ? ""
                       : item.displayValue.toLowerCase(),
-                  cursor: "pointer",
                   border: this.state.active !== item.displayValue ? "1px solid #1D1F22" : ""
                 }}
                 id={item.displayValue}

@@ -31,6 +31,9 @@
     background-color: #1D1F22;
     height: 100%;
 }
+.pdp--item{
+    cursor: pointer;
+}
 .pdp--info > h1{
     margin: 0;
     font-weight: 600;
