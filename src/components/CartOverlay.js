@@ -77,6 +77,7 @@ class CartOverlay extends React.Component {
         <button
         className="navbar--cartOverlay--bag"
           onClick={() => {
+            // this.props.showCart()
             this.props.navigate("/cart")
           }}
         >
