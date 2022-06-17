@@ -37,7 +37,8 @@ class Pdp extends React.Component {
     this.state.refItems.map((item) => ids.push(item.state.active));
     if (
       this.state.properties.attributes.length === 0 ||
-      ( !ids.includes(null) && ids.length === this.state.properties.attributes.length)
+      (!ids.includes(null) &&
+        ids.length === this.state.properties.attributes.length)
     ) {
       this.props.handleCart({
         item: this.state.properties,
@@ -84,11 +85,9 @@ class Pdp extends React.Component {
                 />
               ))}
             </div>
-            <img
-              src={this.state.mainFoto}
-              className="pdp--mainFoto"
-              alt=""
-            />
+            <div className="pdp--mainFoto--wrapper">
+              <img src={this.state.mainFoto} className="pdp--mainFoto" alt="" />
+            </div>
             <div className="pdp--info">
               <h1>{this.state.properties.brand}</h1>
               <h2>{this.state.properties.name}</h2>
@@ -128,4 +127,4 @@ class Pdp extends React.Component {
     );
   }
 }
-export default WrapComponent(Pdp)
+export default WrapComponent(Pdp);
